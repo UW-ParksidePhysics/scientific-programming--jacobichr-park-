@@ -1,0 +1,384 @@
+# Concepts addressed: directory redirection script
+
+Last login: Thu Feb 22 14:32:52 on console
+
+D134619956:~ chris225$ 1s
+
+-bash: 1s: command not found
+
+D134619956:~ chris225$ is
+
+-bash: is: command not found
+
+D134619956:~ chris225$ ls
+
+Desktop Downloads Movies Pictures
+
+Documents Library Music Public
+
+D134619956:~ chris225$ ls /usr
+
+bin libexec sbin standalone
+
+lib local share
+
+D134619956:~ chris225$ ls ~ /usr
+
+/Users/chris225:
+
+Desktop Downloads Movies Pictures
+
+Documents Library Music Public
+
+
+
+
+/usr:
+
+bin libexec sbin standalone
+
+lib local share
+
+D134619956:~ chris225$ ls - l
+
+ls: -: No such file or directory
+
+ls: l: No such file or directory
+
+D134619956:~ chris225$ ls -l
+
+total 0
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Desktop
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Documents
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Downloads
+
+drwx------@ 50 chris225  UWP\Domain Users  1600 Feb 22 14:37 Library
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Movies
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Music
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Pictures
+
+drwxr-xr-x+  4 chris225  UWP\Domain Users   128 Feb 22 14:32 Public
+
+D134619956:~ chris225$ ls -lt
+
+total 0
+
+drwx------@ 50 chris225  UWP\Domain Users  1600 Feb 22 14:37 Library
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Desktop
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Documents
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Downloads
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Movies
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Music
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Pictures
+
+drwxr-xr-x+  4 chris225  UWP\Domain Users   128 Feb 22 14:32 Public
+
+D134619956:~ chris225$ ls -lt --reverse
+
+ls: illegal option -- -
+
+usage: ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]
+
+D134619956:~ chris225$ ls -lt -reverse
+
+total 0
+
+0 drwxr-xr-x+  4 chris225  UWP\Domain Users   128 Feb 22 14:32 Public
+
+ 0: group:everyone deny delete
+
+0 drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Pictures
+
+ 0: group:everyone deny delete
+
+0 drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Music
+
+ 0: group:everyone deny delete
+
+0 drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Movies
+
+ 0: group:everyone deny delete
+
+0 drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Downloads
+
+ 0: group:everyone deny delete
+
+0 drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Documents
+
+ 0: group:everyone deny delete
+
+0 drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Desktop
+
+ 0: group:everyone deny delete
+
+0 drwx------@ 50 chris225  UWP\Domain Users  1600 Feb 22 14:37 Library
+
+ 0: group:everyone deny delete
+
+D134619956:~ chris225$ file picture.jpg
+
+picture.jpg: cannot open `picture.jpg' (No such file or directory)
+
+D134619956:~ chris225$ file picture.jpg
+
+picture.jpg: cannot open `picture.jpg' (No such file or directory)
+
+D134619956:~ chris225$ file example.txt
+
+example.txt: cannot open `example.txt' (No such file or directory)
+
+D134619956:~ chris225$ less /etc/passwd
+
+D134619956:~ chris225$ cd
+
+D134619956:~ chris225$ ls -l
+
+total 0
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Desktop
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Documents
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Downloads
+
+drwx------@ 50 chris225  UWP\Domain Users  1600 Feb 22 14:37 Library
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Movies
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Music
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Pictures
+
+drwxr-xr-x+  4 chris225  UWP\Domain Users   128 Feb 22 14:32 Public
+
+D134619956:~ chris225$ cd Applications
+
+-bash: cd: Applications: No such file or directory
+
+D134619956:~ chris225$ cd applications
+
+-bash: cd: applications: No such file or directory
+
+D134619956:~ chris225$ cd desktop
+
+D134619956:desktop chris225$ ls -l
+
+D134619956:desktop chris225$ cd applications
+
+-bash: cd: applications: No such file or directory
+
+D134619956:desktop chris225$ cd recents
+
+-bash: cd: recents: No such file or directory
+
+D134619956:desktop chris225$ cd favorites
+
+-bash: cd: favorites: No such file or directory
+
+D134619956:desktop chris225$ cd IBM SPSS Statistics
+
+-bash: cd: IBM: No such file or directory
+
+D134619956:desktop chris225$ rwrr
+
+-bash: rwrr: command not found
+
+D134619956:desktop chris225$ 
+
+2
+
+Last login: Thu Feb 22 14:36:06 on ttys000
+
+D134619956:~ chris225$ file
+
+Usage: file [bcCdEhikLlNnprsvzZ0] [-e test] [-f namefile] [-F separator] [-m magicfiles] [-M magicfiles] file...
+
+       file -C -m magicfiles
+
+Try `file --help' for more information.
+
+D134619956:~ chris225$ -f example.jpg
+
+-bash: -f: command not found
+
+D134619956:~ chris225$ -e test
+
+-bash: -e: command not found
+
+D134619956:~ chris225$ file -f example.jpg
+
+file: Cannot open `example.jpg' (No such file or directory)
+
+D134619956:~ chris225$ example.jpg -f
+
+-bash: example.jpg: command not found
+
+D134619956:~ chris225$ ls /usr
+
+bin libexec sbin standalone
+
+lib local share
+
+D134619956:~ chris225$ ls ~ /usr
+
+/Users/chris225:
+
+Desktop Downloads Movies Pictures
+
+Documents Library Music Public
+
+
+
+
+/usr:
+
+bin libexec sbin standalone
+
+lib local share
+
+D134619956:~ chris225$ ls -l
+
+total 0
+
+drwx------+  5 chris225  UWP\Domain Users   160 Feb 22 14:47 Desktop
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Documents
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Downloads
+
+drwx------@ 54 chris225  UWP\Domain Users  1728 Feb 22 14:49 Library
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Movies
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Music
+
+drwx------+  3 chris225  UWP\Domain Users    96 Feb 22 14:32 Pictures
+
+drwxr-xr-x+  4 chris225  UWP\Domain Users   128 Feb 22 14:32 Public
+
+D134619956:~ chris225$ cd pictures
+
+D134619956:pictures chris225$ cd downloads
+
+-bash: cd: downloads: No such file or directory
+
+D134619956:pictures chris225$ cd downloads
+
+-bash: cd: downloads: No such file or directory
+
+D134619956:pictures chris225$ file doofenshmirtz_evil_inc_building
+
+doofenshmirtz_evil_inc_building: cannot open `doofenshmirtz_evil_inc_building' (No such file or directory)
+
+D134619956:pictures chris225$ ls -d
+
+.
+
+D134619956:pictures chris225$ ls -a
+
+. .. .localized
+
+D134619956:pictures chris225$ ls ~ /usr
+
+/Users/chris225:
+
+Desktop Downloads Movies Pictures
+
+Documents Library Music Public
+
+
+
+
+/usr:
+
+bin libexec sbin standalone
+
+lib local share
+
+D134619956:pictures chris225$ ls -l
+
+D134619956:pictures chris225$ ls download
+
+ls: download: No such file or directory
+
+D134619956:pictures chris225$ ls -download
+
+drwx------+ 3 58644023  96 Feb 22 14:32 .
+
+D134619956:pictures chris225$ file Doofenshmirtz_Evil_Inc_building.jpg
+
+Doofenshmirtz_Evil_Inc_building.jpg: cannot open `Doofenshmirtz_Evil_Inc_building.jpg' (No such file or directory)
+
+D134619956:pictures chris225$ cd /Users/chris225/Downloads
+
+D134619956:Downloads chris225$ file Doofenshmirtz_Evil_Inc_building.jpg 
+
+Doofenshmirtz_Evil_Inc_building.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 96x96, segment length 16, baseline, precision 8, 640x480, frames 3
+
+D134619956:Downloads chris225$ less Doofenshmirtz_Evil_Inc_building.jpg
+
+"Doofenshmirtz_Evil_Inc_building.jpg" may be a binary file.  See it anyway? 
+
+
+
+
+<FF><D8><FF><E0>^@^PJFIF^@^A^A^A^@`^@`^@^@<FF><DB>^@C^@^H^F^F^G^F^E^H^G^G^G     
+
+       
+
+^L^T^M^L^K^K^L^Y^R^S^O^T^]^Z^_^^^]^Z^\^\ $.' ",#^\^\(7),01444^_'9=82<.342<FF>
+
+<DB>^@C^A                  ^L^K^L^X^M^X2!^\!222222222222222222222222222222222222
+
+22222222222222<FF><C0>^@^Q^H^A<E0>^B<80>^C^A"^@^B^Q^A^C^Q^A<FF><C4>^@ESC^@^A^@^B
+
+^C^A^A^@^@^@^@^@^@^@^@^@^@^@^D^E^A^B^C^F^G<FF><C4>^@G^P^@^B^B^A^B^C^D^E    ^F^D
+
+^F^A^D^C^@^@^A^B^C^D^E^Q^R!1AQaq^F^S"23^T#4Rbr<81><B1><C1>^U5Bs<91><A1>$%c<E1>CD
+
+S<82><D1><F1>t^GETd<83><92><A2><FF><C4>^@^Z^A^A^@^B^C^A^@^@^@^@^@^@^@^@^@^@^@^@
+
+^A^B^C^D^E^F<FF><C4>^@,^Q^A^@^B^B^A^C^C^D^B^B^C^A^A^@^@^@^@^A^B^C^Q^D^R!1^E2A^S
+
+^T"Q#3a<81>^UR<C1>Bq<FF><DA>^@^L^C^A^@^B^Q^C^Q^@?^@<F4><A0>^CּX^@^@^@^@^@^@^@^@^@
+
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@
+
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@
+
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^H^@^A ^@^@^Fd^@^R^@
+
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@
+
+^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^B^@^@<DA>@bR<8C>"<E5>d<E3>^H<AE>
+
+<D9>=<8A>|<EF>I<B0>1<9F>^M<DF>?<B3>Ф<E4><AC>ydǊ<F7><9D>V^W*2<97>D<D9>ESC/?^W^E|
+
+<F5><D1>Oꧻ<<9C><F5><CD>kU<BB><E4><F8><95><B8><B9><F2>P<AD>s7<CF><F4>[?M<C3>w<E5>
+
+\<A5><97><B7>^W^B<E7><B2><FF>^@ɯn]b{7<B1>zl۽ޙj<98>^^<A5>Y<EB><E3>ϒ<8F>Y^?Chd<DD>
+
+|<BF><C2><E9><D9>V<F8><B5><B2><ףz<A2><C4><D4>#<91>(A<F1>. 9-<F6>]纻VȚ<D9>Z<F6>
+
+<F0>1O*<D2><DA><FF>^@<8E><C5>^H<90><C0><D7>.[<C3>N<AA><B5><DF>9<FF>^@<B1><B7>
+
+<EC><AD>yu<AB>^Q^?<DC>a<E5><DA><DF>9<CB><FA><8F><94><D9><DE>c<9C><F9>'<E5><92>8X
+
+cᇁ<AD>V<F7><9E>>4<D7>te̡<D7>s<F5>}2<EA><A2><F1><A3><8B>L<FF>^@<89>=<DB>g<A2><86>T
+
+<B8><92><97>C<CF><FA>qo^\p<F9><F6><88><CD>^?<95><A3><87><8A>>^]<B4><8D>W<E5>5
+
+:
+
