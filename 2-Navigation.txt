@@ -1,0 +1,35 @@
+# Concepts addressed: Directory, List, Built-in function.
+# Mini-retro:
+Changing directory went well.
+Because I was using the windows command prompt and not linux, some of the commands listed in Chapter 2 didn't work. Having the coding for windows as well would be nice.
+#
+Microsoft Windows [Version 10.0.19042.685]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\System32>cd
+C:\WINDOWS\System32
+
+C:\WINDOWS\System32>cd /usr/bin
+The system cannot find the path specified.
+
+C:\WINDOWS\System32>cd /usr
+The system cannot find the path specified.
+
+C:\WINDOWS\System32>cd ..
+
+C:\Windows>cd
+C:\Windows
+
+C:\Windows>cd ./bin
+The system cannot find the path specified.
+
+C:\Windows>cd bin
+The system cannot find the path specified.
+
+C:\Windows>cd -
+The system cannot find the path specified.
+
+C:\Windows>cd
+C:\Windows
+
+C:\Windows>
