@@ -1,0 +1,113 @@
+# concepts addressed: Directory, File Permission, Script, Text Editor
+noble0563@UWP212115:~$ cp -u *.html destination
+cp: cannot stat '*.html': No such file or directory
+noble0563@UWP212115:~$ https://learn.microsoft.com/en-us/windows/wsl/install
+-bash: https://learn.microsoft.com/en-us/windows/wsl/install: No such file or directory
+noble0563@UWP212115:~$ cp -u *.html destination
+cp: cannot stat '*.html': No such file or directory
+noble0563@UWP212115:~$ mkdir directory
+noble0563@UWP212115:~$ mkdir dir1
+noble0563@UWP212115:~$ mkdir dir1 dir2 dir3
+mkdir: cannot create directory ‘dir1’: File exists
+noble0563@UWP212115:~$ cp item1 item2
+cp: cannot stat 'item1': No such file or directory
+noble0563@UWP212115:~$ cp item directory
+cp: cannot stat 'item': No such file or directory
+noble0563@UWP212115:~$ mv item1 item2
+mv: cannot stat 'item1': No such file or directory
+noble0563@UWP212115:~$ rm item dir1
+rm: cannot remove 'item': No such file or directory
+rm: cannot remove 'dir1': Is a directory
+noble0563@UWP212115:~$ rm item1
+rm: cannot remove 'item1': No such file or directory
+noble0563@UWP212115:~$ ln file link
+ln: failed to access 'file': No such file or directory
+noble0563@UWP212115:~$ ln -s item link
+noble0563@UWP212115:~$ cd
+noble0563@UWP212115:~$ mkdir playground
+noble0563@UWP212115:~$ cd playground
+noble0563@UWP212115:~/playground$ mkdir dir1 dir2
+noble0563@UWP212115:~/playground$ cp /etc/passwd
+cp: missing destination file operand after '/etc/passwd'
+Try 'cp --help' for more information.
+noble0563@UWP212115:~/playground$ ls -l
+total 0
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:59 dir1
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:59 dir2
+noble0563@UWP212115:~/playground$ cp -v /etc/passwd
+cp: missing destination file operand after '/etc/passwd'
+Try 'cp --help' for more information.
+noble0563@UWP212115:~/playground$ cp -i /etc/passwd
+cp: missing destination file operand after '/etc/passwd'
+Try 'cp --help' for more information.
+noble0563@UWP212115:~/playground$ mv passwd fun
+mv: cannot stat 'passwd': No such file or directory
+noble0563@UWP212115:~/playground$ mv fun dir1
+mv: cannot stat 'fun': No such file or directory
+noble0563@UWP212115:~/playground$ mv dir1/fun dir2
+mv: cannot stat 'dir1/fun': No such file or directory
+noble0563@UWP212115:~/playground$ mv dir2/fun
+mv: missing destination file operand after 'dir2/fun'
+Try 'mv --help' for more information.
+noble0563@UWP212115:~/playground$ mv fun dir1
+mv: cannot stat 'fun': No such file or directory
+noble0563@UWP212115:~/playground$ mv dir1 dir2
+noble0563@UWP212115:~/playground$ ls -l dir2
+total 0
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:59 dir1
+noble0563@UWP212115:~/playground$ ls -l dir2/dir1
+total 0
+noble0563@UWP212115:~/playground$ mv dir2/dir1
+mv: missing destination file operand after 'dir2/dir1'
+Try 'mv --help' for more information.
+noble0563@UWP212115:~/playground$ mv dir1/fun
+mv: missing destination file operand after 'dir1/fun'
+Try 'mv --help' for more information.
+noble0563@UWP212115:~/playground$ ln fun fun-hard
+ln: failed to access 'fun': No such file or directory
+noble0563@UWP212115:~/playground$ ln fun dir1/fun-hard
+ln: failed to access 'fun': No such file or directory
+noble0563@UWP212115:~/playground$ ln fun dir1/fun-hard
+ln: failed to access 'fun': No such file or directory
+noble0563@UWP212115:~/playground$ ls -1
+dir2
+noble0563@UWP212115:~/playground$ ls -li
+total 0
+21673573206891242 drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 15:01 dir2
+noble0563@UWP212115:~/playground$ ln -s fun fun-sym
+noble0563@UWP212115:~/playground$ ln -s ../fun dir1/fun-sym
+ln: failed to create symbolic link 'dir1/fun-sym': No such file or directory
+noble0563@UWP212115:~/playground$ ln -s ../fun dir2/fun-sym
+noble0563@UWP212115:~/playground$ ls -l dir1
+ls: cannot access 'dir1': No such file or directory
+noble0563@UWP212115:~/playground$ ln -s /home/me/playground/fun dir1/fun dir1/fun-sym
+ln: target 'dir1/fun-sym': No such file or directory
+noble0563@UWP212115:~/playground$ ln -s dir1 dir1-sym
+noble0563@UWP212115:~/playground$ ls -l
+total 0
+lrwxrwxrwx 1 noble0563 noble0563    4 Mar  7 15:05 dir1-sym -> dir1
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 15:04 dir2
+lrwxrwxrwx 1 noble0563 noble0563    3 Mar  7 15:03 fun-sym -> fun
+noble0563@UWP212115:~/playground$ rm fun-hard
+rm: cannot remove 'fun-hard': No such file or directory
+noble0563@UWP212115:~/playground$ ls -l
+total 0
+lrwxrwxrwx 1 noble0563 noble0563    4 Mar  7 15:05 dir1-sym -> dir1
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 15:04 dir2
+lrwxrwxrwx 1 noble0563 noble0563    3 Mar  7 15:03 fun-sym -> fun
+noble0563@UWP212115:~/playground$ rm -i fun
+rm: cannot remove 'fun': No such file or directory
+noble0563@UWP212115:~/playground$ ls -l
+total 0
+lrwxrwxrwx 1 noble0563 noble0563    4 Mar  7 15:05 dir1-sym -> dir1
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 15:04 dir2
+lrwxrwxrwx 1 noble0563 noble0563    3 Mar  7 15:03 fun-sym -> fun
+noble0563@UWP212115:~/playground$ less fun-sym
+fun-sym: No such file or directory
+noble0563@UWP212115:~/playground$ rm fun-sym dir1-sym
+noble0563@UWP212115:~/playground$ ls -l
+total 0
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 15:04 dir2
+noble0563@UWP212115:~/playground$ cd
+noble0563@UWP212115:~$ rm -r playground
+noble0563@UWP212115:~$
