@@ -33,7 +33,7 @@ times_positions = list(zip(time_list, position_list_deimos))
 
 for time, position_deimos in times_positions:
   print(f'{time:.2f} (s) \t {position_deimos:.2f} (m)')
-
+  
 
 print("-----------------------------------------------------")
 print("time_positions data")
