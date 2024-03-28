@@ -1,0 +1,249 @@
+#Concepts Addressed: Directory, Shell, Argument, Redirection, Parameter, Metacharacters, 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+noble0563@UWP212115:~$ echo this is a test
+this is a test
+noble0563@UWP212115:~$ echo *
+dir1 dir2 dir3 directory link
+noble0563@UWP212115:~$ ls
+dir1  dir2  dir3  directory  link
+noble0563@UWP212115:~$ echo D*
+D*
+noble0563@UWP212115:~$ echo d*
+dir1 dir2 dir3 directory
+noble0563@UWP212115:~$ echo r*
+r*
+noble0563@UWP212115:~$ echo s*
+s*
+noble0563@UWP212115:~$ echo *s
+*s
+noble0563@UWP212115:~$ echo [[:upper]]*
+[[:upper]]*
+noble0563@UWP212115:~$ echo [[:upper:]]*
+[[:upper:]]*
+noble0563@UWP212115:~$ echo /usr/*/share
+/usr/local/share
+noble0563@UWP212115:~$ echo ~
+/home/noble0563
+noble0563@UWP212115:~$ echo ~fol
+~fol
+noble0563@UWP212115:~$ echo ~foo
+~foo
+noble0563@UWP212115:~$ echo $((2 + 2))
+4
+noble0563@UWP212115:~$ echo $(($(5**2)) * 3))
+-bash: syntax error near unexpected token `)'
+noble0563@UWP212115:~$ echo ~$(($((5**2)) * 3))
+~75
+noble0563@UWP212115:~$ echo $((5**2) * 3))
+-bash: syntax error near unexpected token `)'
+noble0563@UWP212115:~$ echo ~$((5**2) * 3))
+-bash: syntax error near unexpected token `)'
+noble0563@UWP212115:~$ echo ~$(((5**2) * 3))
+~75
+noble0563@UWP212115:~$ echo Fuve divided by two equals $((5/2))
+Fuve divided by two equals 2
+noble0563@UWP212115:~$ echo Five divided by two equals $((5/2))
+Five divided by two equals 2
+noble0563@UWP212115:~$ echo with $((5%2)) left over
+with 1 left over
+noble0563@UWP212115:~$ echo Front-{A,B,C}-Back
+Front-A-Back Front-B-Back Front-C-Back
+noble0563@UWP212115:~$ echo Number_{1..5}
+Number_1 Number_2 Number_3 Number_4 Number_5
+noble0563@UWP212115:~$ echo {01..15}
+01 02 03 04 05 06 07 08 09 10 11 12 13 14 15
+noble0563@UWP212115:~$ echo {001..15}
+001 002 003 004 005 006 007 008 009 010 011 012 013 014 015
+noble0563@UWP212115:~$ echo {Z..A}
+Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+noble0563@UWP212115:~$ echo a{A{1,2},B{3,4}}b
+aA1b aA2b aB3b aB4b
+noble0563@UWP212115:~$ hola
+Command 'hola' not found, did you mean:
+  command 'lola' from deb lola (1.6-1)
+  command 'cola' from deb git-cola (3.12.0-1)
+Try: sudo apt install <deb name>
+noble0563@UWP212115:~$ echo hola como estas
+hola como estas
+noble0563@UWP212115:~$ echo hola professor Parker donde esta la biblioteca?
+hola professor Parker donde esta la biblioteca?
+noble0563@UWP212115:~$ mkdir Photos
+noble0563@UWP212115:~$ cd Photos
+noble0563@UWP212115:~/Photos$ mkdir {2007..2009}-{01..12}
+noble0563@UWP212115:~/Photos$ ls
+2007-01  2007-05  2007-09  2008-01  2008-05  2008-09  2009-01  2009-05  2009-09
+2007-02  2007-06  2007-10  2008-02  2008-06  2008-10  2009-02  2009-06  2009-10
+2007-03  2007-07  2007-11  2008-03  2008-07  2008-11  2009-03  2009-07  2009-11
+2007-04  2007-08  2007-12  2008-04  2008-08  2008-12  2009-04  2009-08  2009-12
+noble0563@UWP212115:~/Photos$ echo $USER
+noble0563
+noble0563@UWP212115:~/Photos$ echo red vented at electrial
+red vented at electrial
+noble0563@UWP212115:~/Photos$ echo vote blue
+vote blue
+noble0563@UWP212115:~/Photos$ me
+me: command not found
+noble0563@UWP212115:~/Photos$ mkdir
+mkdir: missing operand
+Try 'mkdir --help' for more information.
+noble0563@UWP212115:~/Photos$ q
+Command 'q' not found, but can be installed with:
+sudo apt install python3-q-text-as-data
+noble0563@UWP212115:~/Photos$ o
+o: command not found
+noble0563@UWP212115:~/Photos$ ^C
+noble0563@UWP212115:~/Photos$ user
+Command 'user' not found, did you mean:
+  command 'fuser' from deb psmisc (23.4-2build3)
+  command 'users' from deb coreutils (8.32-4.1ubuntu1)
+  command 'userv' from deb userv (1.2.1~beta4)
+  command 'iuser' from deb ipmiutil (3.1.8-1)
+Try: sudo apt install <deb name>
+noble0563@UWP212115:~/Photos$ cd noble0563
+-bash: cd: noble0563: No such file or directory
+noble0563@UWP212115:~/Photos$ cd ..
+noble0563@UWP212115:~$ echo $USER
+noble0563
+noble0563@UWP212115:~$ printenv | less
+noble0563@UWP212115:~$ echo $SUER
+
+noble0563@UWP212115:~$ echo $(ls)
+Photos dir1 dir2 dir3 directory link
+noble0563@UWP212115:~$ ls -l $(which cp)
+-rwxr-xr-x 1 root root 141824 Feb  7  2022 /usr/bin/cp
+noble0563@UWP212115:~$ file $(ls -d 4/usr/bin/* | grep zip)
+ls: cannot access '4/usr/bin/*': No such file or directory
+Usage: file [-bcCdEhikLlNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
+            [--mime-type] [-e <testname>] [-F <separator>]  [-f <namefile>]
+            [-m <magicfiles>] [-P <parameter=value>] [--exclude-quiet]
+            <file> ...
+       file -C [-m <magicfiles>]
+       file [--help]
+noble0563@UWP212115:~$ file $(ls -d /usr/bin/* | grep zip)
+/usr/bin/gpg-zip:    POSIX shell script, ASCII text executable
+/usr/bin/gunzip:     POSIX shell script, ASCII text executable
+/usr/bin/gzip:       ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a7668faa2322e181773d5cba4bc5d8fd41e9b7c9, for GNU/Linux 3.2.0, stripped
+/usr/bin/streamzip:  Perl script text executable
+/usr/bin/zipdetails: Perl script text executable
+noble0563@UWP212115:~$ ls -l 'which cp'
+ls: cannot access 'which cp': No such file or directory
+noble0563@UWP212115:~$ ip
+Usage: ip [ OPTIONS ] OBJECT { COMMAND | help }
+       ip [ -force ] -batch filename
+where  OBJECT := { address | addrlabel | fou | help | ila | ioam | l2tp | link |
+                   macsec | maddress | monitor | mptcp | mroute | mrule |
+                   neighbor | neighbour | netconf | netns | nexthop | ntable |
+                   ntbl | route | rule | sr | tap | tcpmetrics |
+                   token | tunnel | tuntap | vrf | xfrm }
+       OPTIONS := { -V[ersion] | -s[tatistics] | -d[etails] | -r[esolve] |
+                    -h[uman-readable] | -iec | -j[son] | -p[retty] |
+                    -f[amily] { inet | inet6 | mpls | bridge | link } |
+                    -4 | -6 | -M | -B | -0 |
+                    -l[oops] { maximum-addr-flush-attempts } | -br[ief] |
+                    -o[neline] | -t[imestamp] | -ts[hort] | -b[atch] [filename] |
+                    -rc[vbuf] [size] | -n[etns] name | -N[umeric] | -a[ll] |
+                    -c[olor]}
+noble0563@UWP212115:~$ echo this is a     test
+this is a test
+noble0563@UWP212115:~$ echo tu madre
+tu madre
+noble0563@UWP212115:~$ echo the total is $100.00
+the total is 00.00
+noble0563@UWP212115:~$ ls -l `which`
+total 0
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar 14 14:38 Photos
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:55 dir1
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:55 dir2
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:55 dir3
+drwxr-xr-x 1 noble0563 noble0563 4096 Mar  7 14:55 directory
+lrwxrwxrwx 1 noble0563 noble0563    4 Mar  7 14:59 link -> item
+noble0563@UWP212115:~$ ls -l `which cp`
+-rwxr-xr-x 1 root root 141824 Feb  7  2022 /usr/bin/cp
+noble0563@UWP212115:~$ ls -l two words.txt
+ls: cannot access 'two': No such file or directory
+ls: cannot access 'words.txt': No such file or directory
+noble0563@UWP212115:~$ ls -l "two words.txt"
+ls: cannot access 'two words.txt': No such file or directory
+noble0563@UWP212115:~$ ls -l ''two words.txt''
+ls: cannot access 'two': No such file or directory
+ls: cannot access 'words.txt': No such file or directory
+noble0563@UWP212115:~$ ls -l ``two words.txt``
+ls: cannot access 'two': No such file or directory
+ls: cannot access 'words.txt': No such file or directory
+noble0563@UWP212115:~$ echo "$USER $((2+2) $(cal)"
+>
+> echo "$USER $((2+2) $(cal)"
+> echo "$USER $((2+2) $(cal)"
+
+echo "$USER $((2+2)) $(cal)"
+> cd ..
+> cd ..
+> ls -l `which cp`
+> help
+> cd..
+> cd ..
+> ^C
+noble0563@UWP212115:~$ echo "$USER $((2+2)) $(cal)"
+Command 'cal' not found, but can be installed with:
+sudo apt install ncal
+noble0563 4
+noble0563@UWP212115:~$ sudo apt install ncal
+[sudo] password for noble0563:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package ncal
+noble0563@UWP212115:~$ echo "$USER $((2+2)) $(cal)"
+Command 'cal' not found, but can be installed with:
+sudo apt install ncal
+noble0563 4
+noble0563@UWP212115:~$ echo $(cal)
+Command 'cal' not found, but can be installed with:
+sudo apt install ncal
+
+noble0563@UWP212115:~$ echo "this is a                                                                                                                                                                                                                                                                                                                                                        test"
+this is a                                                                                                                                                                                                                                                                                                                                                        test
+noble0563@UWP212115:~$ echo text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER
+text /home/noble0563/*.txt a b foo 4 noble0563
+noble0563@UWP212115:~$ echo "text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER"
+text ~/*.txt {a,b} foo 4 noble0563
+noble0563@UWP212115:~$ echo `text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER`
+Command 'text' not found, did you mean:
+  command 'texc' from deb doomsday (2.3.1+ds1-1build1)
+  command 'next' from deb mailutils-mh (1:3.14-1)
+  command 'next' from deb mmh (0.4-4)
+  command 'next' from deb nmh (1.7.1-11)
+  command 'tex' from deb texlive-binaries (2021.20210626.59705-1ubuntu0.1)
+  command 'test' from deb coreutils (8.32-4.1ubuntu1)
+Try: sudo apt install <deb name>
+
+noble0563@UWP212115:~$ echo "The balance for the user $USER is: /$5.00"
+The balance for the user noble0563 is: /.00
+noble0563@UWP212115:~$ echo "The balance for the user $USER is: \$5.00"
+The balance for the user noble0563 is: $5.00
+noble0563@UWP212115:~$ mv bad\&filename good_filename
+mv: cannot stat 'bad&filename': No such file or directory
+noble0563@UWP212115:~$ mv bad\\&filename good_filename
+[1] 185
+mv: missing destination file operand after 'bad\'
+Try 'mv --help' for more information.
+Command 'filename' not found, but can be installed with:
+sudo apt install wcstools
+[1]+  Exit 1                  mv bad\\
+noble0563@UWP212115:~$ \a
+a: command not found
+noble0563@UWP212115:~$ echo /a
+/a
+noble0563@UWP212115:~$ tu /a madre
+tu: command not found
+noble0563@UWP212115:~$ echo tu madre \a
+tu madre a
+noble0563@UWP212115:~$ mv \a
+mv: missing destination file operand after 'a'
+Try 'mv --help' for more information.
+noble0563@UWP212115:~$ mv bad\a
+mv: missing destination file operand after 'bada'
+Try 'mv --help' for more information.
+noble0563@UWP212115:~$
