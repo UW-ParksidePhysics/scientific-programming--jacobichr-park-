@@ -1,0 +1,143 @@
+Concepts addressed: File permission, Redirection, Shell, Directory
+
+root@JICLaptop:~# file /etc/shadow
+/etc/shadow: ASCII text
+root@JICLaptop:~# less /etc/shadow
+root@JICLaptop:~# id
+uid=0(root) gid=0(root) groups=0(root)
+root@JICLaptop:~# > foo.txt
+root@JICLaptop:~# ls -l foo.txt
+-rw-r--r-- 1 root root 0 Mar 28 15:02 foo.txt
+root@JICLaptop:~# chmod 600 foo.txt
+root@JICLaptop:~# ls -l foo.txt
+-rw------- 1 root root 0 Mar 28 15:02 foo.txt
+root@JICLaptop:~# rm -f foo.txt
+root@JICLaptop:~# umask
+0022
+root@JICLaptop:~# > foo.txt
+root@JICLaptop:~# ls -l foo.txt
+-rw-r--r-- 1 root root 0 Mar 28 15:05 foo.txt
+root@JICLaptop:~# rm foo.txt
+root@JICLaptop:~# umask 0000
+root@JICLaptop:~# > foo.txt
+root@JICLaptop:~# ls -l foo.txt
+-rw-rw-rw- 1 root root 0 Mar 28 15:06 foo.txt
+root@JICLaptop:~# rm foo.txt; umask 0002
+root@JICLaptop:~# su [-[1]] [user]
+su: user [-[1]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-[l]] [user]
+su: user [-[l]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-[i]] [user]
+su: user [-[i]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-[1]] [user]
+su: user [-[1]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-l] [user]
+su: user [-l] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-[l]] [madre]
+su: user [-[l]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# [-[madre]] [user]
+[-[madre]]: command not found
+root@JICLaptop:~# [-[l]] [root]
+[-[l]]: command not found
+root@JICLaptop:~# [-[l]] [noble0563]
+[-[l]]: command not found
+root@JICLaptop:~# [-[1]] [user]
+[-[1]]: command not found
+root@JICLaptop:~# su -
+root@JICLaptop:~# su [-[l]] [user]
+su: user [-[l]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-[madre]] [user]
+su: user [-[madre]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su [-[]] [user]
+su: user [-[]] does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# exit
+logout
+root@JICLaptop:~# su - c 'command'
+su: user c does not exist or the user entry does not contain all the required fields
+root@JICLaptop:~# su -c 'ls -l /root/*'
+-rw-r--r-- 1 root root    46 Mar  7 14:55 /root/lazy_dog.txt
+-rw-r--r-- 1 root root    56 Mar  7 14:46 /root/ls-error.txt
+-rw-r--r-- 1 root root 47443 Mar 28 14:57 /root/ls-output.tt
+-rw-r--r-- 1 root root 47443 Mar 28 14:55 /root/ls-output.txt
+-rw-r--r-- 1 root root 47443 Mar 28 14:56 /root/ls-output.txtut.txt
+-rw-r--r-- 1 root root  7192 Mar  7 15:04 /root/ls.txt
+-rw-r--r-- 1 root root     0 Mar  7 14:53 /root/movie.mpeg
+
+/root/photos:
+total 4
+drwxr-xr-x 2 root root 4096 Mar 14 14:42 photos
+
+/root/snap:
+total 4
+drwxr-xr-x 5 root root 4096 Mar  7 16:46 ubuntu-desktop-installer
+root@JICLaptop:~# sudo backup_script
+sudo: backup_script: command not found
+root@JICLaptop:~# sudo backup_script
+sudo: backup_script: command not found
+root@JICLaptop:~# sudo -l
+Matching Defaults entries for root on JICLaptop:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin,
+    use_pty
+
+User root may run the following commands on JICLaptop:
+    (ALL : ALL) ALL
+root@JICLaptop:~# chown [owner][:[group]] file...
+chown: invalid user: ‘[owner][:[group]]’
+root@JICLaptop:~# chown [owner][:[group]] file
+chown: invalid user: ‘[owner][:[group]]’
+root@JICLaptop:~# chown [owner][:[group]] file.
+chown: invalid user: ‘[owner][:[group]]’
+root@JICLaptop:~# chown [madre][:[group]] file.txt
+chown: invalid user: ‘[madre][:[group]]’
+root@JICLaptop:~# sudo -cp myfile.txt ~tony
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group] [-h host] [-p prompt] [-R directory]
+            [-T timeout] [-u user] [VAR=value] [-i|-s] [<command>]
+usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group] [-h host] [-p prompt] [-R directory] [-T
+            timeout] [-u user] file ...
+root@JICLaptop:~# sudo ls -l ~tony/myfile.txt
+ls: cannot access '~tony/myfile.txt': No such file or directory
+root@JICLaptop:~# sudo chown tony: ~tony/myfile.txt
+chown: invalid spec: ‘tony:’
+root@JICLaptop:~# sudo ls -l !tony/myfile.txt
+-bash: !tony/myfile.txt: event not found
+root@JICLaptop:~# sudo mkdir /usr/local/share/Music
+root@JICLaptop:~# ls -ld /usr/local/share/Music
+drwxr-xr-x 2 root root 4096 Mar 28 15:20 /usr/local/share/Music
+root@JICLaptop:~# sudo chown :music /usr/local/share/Music
+chown: invalid group: ‘:music’
+root@JICLaptop:~# sudo chmod 775 /usr/local/share/Music
+root@JICLaptop:~# ls -ld usr/local/share/Music
+ls: cannot access 'usr/local/share/Music': No such file or directory
+root@JICLaptop:~# sudo chown :music /usr/local/share/Music
+chown: invalid group: ‘:music’
+root@JICLaptop:~# sudo chmod 775 /usr/local/share/Music
+root@JICLaptop:~# ls -ld /usr/local/share/Music
+drwxrwxr-x 2 root root 4096 Mar 28 15:20 /usr/local/share/Music
+root@JICLaptop:~# > /usr/local/share/Music/test_file
+root@JICLaptop:~# ls -l /usr/local/share/Music
+total 0
+-rw-rw-r-- 1 root root 0 Mar 29 12:58 test_file
+root@JICLaptop:~# sudo chmod g+s /usr/local/share/Music
+root@JICLaptop:~# ls -ld /usr/local/share/Music
+drwxrwsr-x 2 root root 4096 Mar 29 12:58 /usr/local/share/Music
+root@JICLaptop:~# umask 0002
+root@JICLaptop:~# rm /usr/local/share/Music/test_file
+root@JICLaptop:~# > /usr/local/share/Music/test_file
+root@JICLaptop:~# mkdir /usr/local/share/Music/test_dir
+root@JICLaptop:~# ls -l /usr/local/share/Music
+total 4
+drwxrwsr-x 2 root root 4096 Mar 29 12:59 test_dir
+-rw-rw-r-- 1 root root    0 Mar 29 12:59 test_file
+root@JICLaptop:~# passwd
+New password:
+Retype new password:
+No password has been supplied.
+New password:
+Retype new password:
+Sorry, passwords do not match.
+passwd: Authentication token manipulation error
+passwd: password unchanged
+root@JICLaptop:~#
