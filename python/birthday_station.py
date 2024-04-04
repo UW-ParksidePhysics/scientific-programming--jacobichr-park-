@@ -1,3 +1,4 @@
+Web VPython 3.2
 from vpython import *
 # GlowScript 3.0 VPython
 
@@ -21,6 +22,13 @@ pause = False
 rotation = 0
 drag = False
 
+
+ring_color_one = vector(0.6,0.5,0.1) #gold
+ring_color_two = vector(1,1,1) #white
+station_color = vector(0.7,0.2,0.7) #maroon
+birthday_quotient = 2.0/25.0 
+
+
 class spacestation:
     def __init__(self, whichcanvas):
         self.N = 50 # number of boxes used to create the ring-shaped space station
@@ -30,34 +38,34 @@ class spacestation:
         whichcanvas.select()
         self.person = cylinder(pos=vector(0, -self.R, 0), axis=vector(0, self.h, 0), 
                         size=vector(self.h, 2 * 0.1, 2 * 0.1)) 
-        
+
         thick = 0.5 # thickness of space station
         dtheta = 2 * pi / self.N
         paint = color.red
         red = True
         boxes = [self.person]
-        
+
         for i in range(self.N):
             theta = i * dtheta
             b = box(pos=(self.R + thick / 2) * vector(cos(theta), sin(theta), 0),
                     size=vector(thick, 2 * (self.R + thick) * sin(dtheta / 2), thick))
             if red:
-              b.color = color.red
+              b.color = ring_color_one
               red = False
             else:
-              b.color = color.blue
+              b.color = ring_color_two
               red = True
             b.rotate(angle=theta, axis=vector(0, 0, 1))
             boxes.append(b)
-        
+
         self.hull = compound(boxes)
-        
+
         self.ball = sphere(pos=self.person.pos + self.person.axis,
-                    color=color.cyan, size=2 * 0.2 * vector(1, 1, 1))
-        
+                    color=station_color, size=2 * 0.2 * vector(1, 1, 1))
+
         self.trail = attach_trail(self.ball, radius=0.1 * self.ball.size.x, pps=10, retain=500)
         self.reset()
-        
+
     def reset(self):
         global rotation
         self.hull.rotate(angle=-rotation, axis=vector(0, 0, 1), origin=vector(0, 0, 0))
@@ -72,7 +80,7 @@ def bind_mouse(station, vector1, vector2):
 
     def down():
         global drag, gotv, v
-        
+
         def set_v():
             vector1.axis = s.mouse.pos - vector1.pos
             vector2.axis = vector1.axis
@@ -104,10 +112,10 @@ def bind_mouse(station, vector1, vector2):
             else:
                 v = vector2.axis / scalefactor
             gotv = True
-            
+
         s.bind("mousemove", move)
         s.bind("mouseup", up)
-            
+
     s.bind("mousedown", down)
 
 scene1 = canvas(width=430, height=400, align='left', userspin=False, userzoom=False)
@@ -119,7 +127,7 @@ Inertial frame on the left, rotating frame on the right."""
 station1 = spacestation(scene1)
 station2 = spacestation(scene2)
 scene1.autoscale = scene2.autoscale = False
-omega = 1  # angular speed of space station; period of rotation is 2*pi/omega
+omega = 2*3.1415926535897932384626 / birthday_quotient  # angular speed of space station; period of rotation is 2*pi/omega
 deltat = 0.001 * 2 * pi / omega
 v0 = omega * (station1.R - station1.h)
 scalefactor = 5 / (omega * station1.R)
@@ -163,16 +171,16 @@ while True:
     while True:
         rate(0.5/deltat) # slow down the plotting
         rotation += omega * deltat
-        
+
         station1.ball.rotate(angle=omega * deltat, axis=vector(0, 0, 1), origin=vector(0, 0, 0))
-        
+
         station1.hull.rotate(angle=omega * deltat, axis=vector(0, 0, 1), origin=vector(0, 0, 0))
-        
+
         r = r + v * deltat # update the actual position of the ball (in inertial frame)
         station1.ball.pos = r
         newr = vector(r)
         station2.ball.pos = newr.rotate(angle=-omega * t, axis=vector(0, 0, 1))
-    
+
         if mag(station1.ball.pos) >= station1.R: # if ball hits floor, make it stick there
             direction = norm(station1.ball.pos)
             station1.ball.pos = station1.R * direction
