@@ -1,0 +1,113 @@
+# concepts addressed: prompt, directory, redirection, parameter, metacharacter, script
+
+Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.146.1-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+This message is shown once a day. To disable it please create the
+/root/.hushlogin file.
+root@JICLaptop:~# ls
+lazy_dog.txt  ls-error.txt  ls-output.txt  ls.txt  movie.mpeg  photos  snap
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls l
+ls: cannot access 'l': No such file or directory
+root@JICLaptop:~# ls
+.bash_history  .lesshst       lazy_dog.txt   ls.txt         snap/
+.bashrc        .motd_shown    ls-error.txt   movie.mpeg
+.cache/        .profile       ls-output.txt  photos/
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls l
+lazy_dog.txt   ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls
+.bash_history  .lesshst       lazy_dog.txt   ls.txt         snap/
+.bashrc        .motd_shown    ls-error.txt   movie.mpeg
+.cache/        .profile       ls-output.txt  photos/
+root@JICLaptop:~# ls
+.bash_history  .lesshst       lazy_dog.txt   ls.txt         snap/
+.bashrc        .motd_shown    ls-error.txt   movie.mpeg
+.cache/        .profile       ls-output.txt  photos/
+root@JICLaptop:~# ls ls
+ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls ls
+ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls ls
+ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls ls
+ls-error.txt   ls-output.txt  ls.txt
+root@JICLaptop:~# ls ls-output.txt
+ls-output.txt
+root@JICLaptop:~# ls D
+ls: cannot access 'D': No such file or directory
+root@JICLaptop:~# ls Documents
+ls: cannot access 'Documents': No such file or directory
+root@JICLaptop:~# ls
+ls            lsass.exe     lscpu         lslogins      lsmproxy.dll  lspgpot
+lsaadt.dll    lsattr        lshw          lsm.dll       lsns          lsusb
+lsasrv.dll    lsb_release   lsipc         lsmem         lsof
+lsasrv.mof    lsblk         lslocks       lsmod         lspci
+root@JICLaptop:~# ls /home/
+root@JICLaptop:~# ls /user/Documents
+ls: cannot access '/user/Documents': No such file or directory
+root@JICLaptop:~# ls /home/user/Documents
+ls: cannot access '/home/user/Documents': No such file or directory
+root@JICLaptop:~# pwd
+/root
+root@JICLaptop:~# cd home
+-bash: cd: home: No such file or directory
+root@JICLaptop:~# ls
+lazy_dog.txt  ls-error.txt  ls-output.txt  ls.txt  movie.mpeg  photos  snap
+root@JICLaptop:~# ls movie.mpeg
+movie.mpeg
+root@JICLaptop:~# history | less
+root@JICLaptop:~# hisotry | gre
+grep       gresource
+root@JICLaptop:~# hisotry | grep /usr/bin
+hisotry: command not found
+root@JICLaptop:~# history | grep /usr/bin
+    2  ls -l /usr/bin > ls-output.txt
+    3  [me@linuxbox ~]$ ls -l /usr/bin > ls-output.txt
+    4  $ ls -l /usr/bin > ls-output.txt
+    8  ls -l /usr/bin > ls-output.txt
+   14  ls -l /usr/bin >> ls-output.txt
+   22  ls -l /usr/bin > ls-output.txt
+   30  ls /bin /usr/bin | sort | uniq | less
+   31  ls /bin /usr/bin | sort | uniq -d | less
+   33  ls /bin /usr/bin | sort | uniq | wc -l
+   35  ls /usr/bin | tail -n 5
+   38  ls /usr/bin | tee ls.txt | grep zip
+   84  hisotry | grep /usr/bin
+   85  history | grep /usr/bin
+root@JICLaptop:~# !88
+-bash: !88: event not found
+root@JICLaptop:~#  !88
+-bash: !88: event not found
+root@JICLaptop:~# $ !88
+-bash: !88: event not found
+root@JICLaptop:~# !2
+ls -l /usr/bin > ls-output.txt
+root@JICLaptop:~# ls -l /usr/bin > ls-output.txt
+root@JICLaptop:~# ls -l /usr/bin > ls-output.txt
+root@JICLaptop:~#
+root@JICLaptop:~#
+root@JICLaptop:~# ls -l /usr/bin > ls-output.txtut.txt
+root@JICLaptop:~# ls -l /usr/bin > ls-output.txtut.txt
+root@JICLaptop:~#
+root@JICLaptop:~# ls -l /usr/bin > ls-output.tt
+root@JICLaptop:~#
