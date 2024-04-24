@@ -1,0 +1,175 @@
+# Concepts addressed:
+
+Shell, Text editor
+
+root@JICLaptop:~# gedit
+2024/04/18 14:40:49.877770 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:3723): Gdk-WARNING **: 14:40:49.963: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:3723): IBUS-WARNING **: 14:40:50.044: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+^C
+root@JICLaptop:~# gedit &
+[1] 3904
+root@JICLaptop:~# 2024/04/18 14:41:13.393788 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:3904): Gdk-WARNING **: 14:41:13.468: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:3904): IBUS-WARNING **: 14:41:13.547: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+^C
+root@JICLaptop:~# ps
+PID TTY          TIME CMD
+356 pts/0    00:00:00 bash
+3904 pts/0    00:00:00 gedit
+4086 pts/0    00:00:00 ps
+root@JICLaptop:~# jobs
+[1]+  Running                 gedit &
+root@JICLaptop:~# ^C
+root@JICLaptop:~# ^C
+root@JICLaptop:~# fg %1
+gedit
+^C
+root@JICLaptop:~# gedit
+2024/04/18 14:43:39.013850 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:4561): Gdk-WARNING **: 14:43:39.098: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:4561): IBUS-WARNING **: 14:43:39.184: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+^Z
+[1]+  Stopped                 gedit
+root@JICLaptop:~# bg %1
+[1]+ gedit &
+root@JICLaptop:~# kill
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@JICLaptop:~# kill %1
+root@JICLaptop:~# kill [-signal] PID...
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID...: arguments must be process or job IDs
+[1]+  Terminated              gedit
+root@JICLaptop:~# gedit &
+[1] 5372
+root@JICLaptop:~# 2024/04/18 14:46:43.229406 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:5372): Gdk-WARNING **: 14:46:43.305: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:5372): IBUS-WARNING **: 14:46:43.384: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+kill -1
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@JICLaptop:~# kill -l
+1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+root@JICLaptop:~# kill -l
+1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+root@JICLaptop:~# kill -1
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@JICLaptop:~# kill &
+[2] 5572
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@JICLaptop:~# kill gedit &
+[3] 5606
+[2]   Exit 2                  kill
+-bash: kill: gedit: arguments must be process or job IDs
+root@JICLaptop:~# gedit &
+[4] 5677
+[3]   Exit 1                  kill gedit
+root@JICLaptop:~# 2024/04/18 14:47:38.199026 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:5677): Gdk-WARNING **: 14:47:38.274: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:5677): IBUS-WARNING **: 14:47:38.354: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+kill [-signal] PID...
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID...: arguments must be process or job IDs
+root@JICLaptop:~# kill [-signal] PID...
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID...: arguments must be process or job IDs
+root@JICLaptop:~# kill %1
+root@JICLaptop:~# kill [-signal] PID
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID: arguments must be process or job IDs
+[1]-  Terminated              gedit
+root@JICLaptop:~# gedit &
+[5] 6511
+root@JICLaptop:~# 2024/04/18 14:50:49.705055 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:6511): Gdk-WARNING **: 14:50:49.780: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:6511): IBUS-WARNING **: 14:50:49.861: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+kill -1
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@JICLaptop:~# kill -1
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@JICLaptop:~# kill [-signal] PID
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID: arguments must be process or job IDs
+root@JICLaptop:~# kill [-signal] PID -l
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID: arguments must be process or job IDs
+-bash: kill: -l: arguments must be process or job IDs
+root@JICLaptop:~# kill [-signal] PID -1
+-bash: kill: [-signal]: arguments must be process or job IDs
+-bash: kill: PID: arguments must be process or job IDs
+root@JICLaptop:~# gedit &
+[6] 7431
+[4]   Terminated              gedit
+[5]   Terminated              gedit
+root@JICLaptop:~# internal error, please report: running "gedit" failed: cannot find installed snap "gedit" at revision 684: missing file /snap/gedit/684/meta/snap.yaml
+killall
+Usage: killall [OPTION]... [--] NAME...
+killall -l, --list
+killall -V, --version
+
+-e,--exact          require exact match for very long names
+-I,--ignore-case    case insensitive process name match
+-g,--process-group  kill process group instead of process
+-y,--younger-than   kill processes younger than TIME
+-o,--older-than     kill processes older than TIME
+-i,--interactive    ask for confirmation before killing
+-l,--list           list all known signal names
+-q,--quiet          don't print complaints
+-r,--regexp         interpret NAME as an extended regular expression
+-s,--signal SIGNAL  send this signal instead of SIGTERM
+-u,--user USER      kill only process(es) running as USER
+-v,--verbose        report if the signal was successfully sent
+-V,--version        display version information
+-w,--wait           wait for processes to die
+-n,--ns PID         match processes that belong to the same namespaces
+as PID
+-Z,--context REGEXP kill only process(es) having context
+(must precede other arguments)
+
+[6]+  Exit 46                 gedit
+root@JICLaptop:~# killall gedit
+gedit: no process found
+root@JICLaptop:~# fg %1
+-bash: fg: %1: no such job
+root@JICLaptop:~# bg %1
+-bash: bg: %1: no such job
+root@JICLaptop:~# fg %l
+-bash: fg: %l: no such job
+root@JICLaptop:~# gedit
+internal error, please report: running "gedit" failed: cannot find installed snap "gedit" at revision 684: missing file /snap/gedit/684/meta/snap.yaml
+root@JICLaptop:~#

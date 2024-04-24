@@ -1,0 +1,76 @@
+# Concepts addressed:
+
+Shell, Text editor, Variable
+
+
+
+
+Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.146.1-microsoft-standard-WSL2 x86_64)
+
+* Documentation:  https://help.ubuntu.com
+* Management:     https://landscape.canonical.com
+* Support:        https://ubuntu.com/advantage
+
+* Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+This message is shown once a day. To disable it please create the
+/root/.hushlogin file.
+root@JICLaptop:~# printenv | less
+root@JICLaptop:~# printenv USER
+root
+root@JICLaptop:~# set | less
+root@JICLaptop:~# ech $HOME
+Command 'ech' not found, did you mean:
+command 'ecm' from deb gmp-ecm (7.0.4+ds-6)
+command 'bch' from deb bikeshed (1.78-0ubuntu1)
+command 'sch' from deb scheme2c (2012.10.14-1ubuntu1)
+command 'echo' from deb coreutils (8.32-4.1ubuntu1)
+command 'ecl' from deb ecl (21.2.1+ds-4)
+command 'dch' from deb devscripts (2.22.1ubuntu1)
+command 'ecj' from deb ecj (3.16.0-1)
+Try: apt install <deb name>
+root@JICLaptop:~# alias
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+root@JICLaptop:~# printenv USER
+root
+root@JICLaptop:~# set | less
+root@JICLaptop:~# foo="This is some "
+root@JICLaptop:~# echo $foo
+This is some
+root@JICLaptop:~# foo=$foo"text."
+root@JICLaptop:~# echo $foo
+This is some text.
+root@JICLaptop:~# gedit some_file
+2024/04/24 10:32:40.629818 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/0/bus: connect: no such file or directory
+
+(gedit:5978): Gdk-WARNING **: 10:32:41.639: Settings portal not found: Could not connect: No such file or directory
+
+(gedit:5978): IBUS-WARNING **: 10:32:41.870: Failed to mkdir /root/snap/gedit/684/.config/ibus/bus: Not a directory
+
+^C
+root@JICLaptop:~# cp .bashrc .bashrc.bak
+root@JICLaptop:~# nano .bashrc
+root@JICLaptop:~# source .bashrc
+root@JICLaptop:~# nano .bashrc
+root@JICLaptop:~# source .bashrc
+root@JICLaptop:~# ll
+total 168
+-rw-r--r-- 1 root root    46 Mar  7 14:55 lazy_dog.txt
+-rw-r--r-- 1 root root    56 Mar  7 14:46 ls-error.txt
+-rw-r--r-- 1 root root 47443 Mar 28 14:57 ls-output.tt
+-rw-r--r-- 1 root root 47443 Mar 28 14:55 ls-output.txt
+-rw-r--r-- 1 root root 47443 Mar 28 14:56 ls-output.txtut.txt
+-rw-r--r-- 1 root root  7192 Mar  7 15:04 ls.txt
+-rw-r--r-- 1 root root     0 Mar  7 14:53 movie.mpeg
+drwxr-xr-x 3 root root  4096 Mar 14 14:42 photos
+drwx------ 4 root root  4096 Apr 18 14:39 snap
+root@JICLaptop:~#
