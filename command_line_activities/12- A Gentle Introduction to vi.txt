@@ -1,0 +1,61 @@
+# Concepts adressed: 
+directory, redirection, script, text editor
+
+foo.txt
+
+the big brown fox jumped over the big dog. it was cool.
+line 2
+line 3
+line 4
+line 5
+
+foo1.txt
+
+teh beeg brawn fosh jamped ova da beeg brawn doge. it waz kul.
+line 2
+line 3
+line 4
+line 5
+
+output.txt
+
+teh beeg brawn fosh jamped ova da beeg brawn doge. it waz kul.
+lrwxrwxrwx 1 root root           4 Feb 17  2020 NF -> col1
+-rwxr-xr-x 1 root root       51632 Feb  7  2022 [
+-rwxr-xr-x 1 root root       35344 Jun  5  2023 aa-enabled
+-rwxr-xr-x 1 root root       35344 Jun  5  2023 aa-exec
+-rwxr-xr-x 1 root root       31248 Jun  5  2023 aa-features-abi
+-rwxr-xr-x 1 root root       14478 Aug 10  2023 add-apt-repository
+-rwxr-xr-x 1 root root       14712 Feb 20  2022 addpart
+lrwxrwxrwx 1 root root          26 Jun  4  2023 addr2line -> x86_64-linux-gnu-addr2line
+-rwxr-xr-x 1 root root        2568 Apr 13  2023 apport-bug
+-rwxr-xr-x 1 root root       13360 Apr 13  2023 apport-cli
+lrwxrwxrwx 1 root root          10 Apr 13  2023 apport-collect -> apport-bug
+-rwxr-xr-x 1 root root        2070 Apr 13  2023 apport-unpack
+lrwxrwxrwx 1 root root           6 Mar 17  2022 apropos -> whatis
+-rwxr-xr-x 1 root root       18824 Oct  6  2023 apt
+lrwxrwxrwx 1 root root          18 Aug 10  2023 apt-add-repository -> add-apt-repository
+-rwxr-xr-x 1 root root       84448 Oct  6  2023 apt-cache
+-rwxr-xr-x 1 root root       27104 Oct  6  2023 apt-cdrom
+-rwxr-xr-x 1 root root       27024 Oct  6  2023 apt-config
+-rwxr-xr-x 1 root root       23008 Oct  6  2023 apt-extracttemplates
+-rwxr-xr-x 1 root root      236008 Oct  6  2023 apt-ftparchive
+-rwxr-xr-x 1 root root       51680 Oct  6  2023 apt-get
+-rwxr-xr-x 1 root root       28173 Oct  6  2023 apt-key
+-rwxr-xr-x 1 root root       51680 Oct  6  2023 apt-mark
+-rwxr-xr-x 1 root root       39320 Oct  6  2023 apt-sortpkgs
+lrwxrwxrwx 1 root root          19 Jun  4  2023 ar -> x86_64-linux-gnu-ar
+-rwxr-xr-x 1 root root       31232 Feb  7  2022 arch
+lrwxrwxrwx 1 root root          19 Jun  4  2023 as -> x86_64-linux-gnu-as
+lrwxrwxrwx 1 root root          21 Nov 22 15:36 awk -> /etc/alternatives/awk
+-rwxr-xr-x 1 root root       51720 Feb  7  2022 b2sum
+-rwxr-xr-x 1 root root       35328 Feb  7  2022 base32
+-rwxr-xr-x 1 root root       35328 Feb  7  2022 base64
+-rwxr-xr-x 1 root root       35328 Feb  7  2022 basename
+-rwxr-xr-x 1 root root       47616 Feb  7  2022 basenc
+-rwxr-xr-x 1 root root     1396520 Jan  6  2022 bash
+-rwxr-xr-x 1 root root        6818 Jan  6  2022 bashbug
+-rwxr-xr-x 1 root root       72184 Sep 19  2023 bootctl
+-rwxr-xr-x 1 root root       92664 Sep 19  2023 busctl
+-rwxr-xr-x 1 root root     2193264 Feb  4  2022 busybox
+"ls-output.txt" 784L, 47441B
