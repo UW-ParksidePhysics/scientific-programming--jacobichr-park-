@@ -1,65 +1,93 @@
-'''
-This program takes two dates as inuput, and calculates the distance of
-Pluto and Neptue from the Sun throught the interval.
+"""
+A program to calculate and visualize the distances of Pluto and Neptune from the Sun.
 
-Currently, the dates are automatically set to Jan 1 of 1900 and 2600
-as this is an interesting range, showing the previous crossing of the
-boides and the next two in the upcoming 600 years. It plots this information.
+This module uses astronomical ephemerides to calculate the distances of Pluto and Neptune
+from the Sun over a specified date range, computes the rate of change of these distances,
+and uses Newton's law of gravitation to calculate accelerations. The calculated distances,
+velocities, and accelerations are then visualized in a graph, and key crossing points are
+highlighted.
 
-The program also calculates the rate of change (of distance) of Pluto and Neptune,
-and their accelerations based on Newton's law of gravitation. It should be
-understood that rate of change is the rate at which their distances change
-in relation to the Sun, not their actual velocities.
+Currently, the program is set to calculate from January 1, 1900, to January 1, 2600,
+an interval that covers historical and future crossings of the orbits of these bodies.
+"""
 
-The distances are plotted in a graph for visualization. For the calculated
-distances at and crossing points, this information is printed in a table
-and a list for simple, more precise reading.
-'''
 from skyfield.api import load, Loader
 import matplotlib.pyplot as plt
 from scipy.constants import G
 import numpy as np
 from tabulate import tabulate
 
-
 def get_date_input(prompt, ts):
-    # Prompt the user for date input
-    # Currently unused. Program instead automatically sets years to 1900 and 2600
+    """
+    Prompt the user for a date within the supported range of an ephemeris file.
+
+    The function continues prompting until a valid date is entered or the program is terminated.
+
+    Parameters:
+        prompt (str): The input prompt to display to the user.
+        ts (TimeScale): The Skyfield timescale object.
+
+    Returns:
+        datetime: The user-provided date, converted to a Skyfield time object.
+    """
     while True:
         print(prompt)
         try:
             year = int(input("Enter the year, must be from 1550-2650 or 1969-17191 (AD): "))
             month = int(input("Enter the month (MM), e.g., 07 for July: "))
             day = int(input("Enter the day (DD), e.g., 15: "))
-            # For BC dates, we need to subtract one because there is no year 0 in the astronomical year numbering.
-            # BC dates are deprecated, ephamaris files do not contain BC information.
-            year = year if year > 0 else year - 1
+            year = year if year > 0 else year - 1  # Adjust for BC dates
             date = ts.utc(year, month, day)
             return date
         except ValueError as e:
             print(f"Invalid date entered: {e}")
 
-
 def select_ephemeris_file(date1, date2, ephemeris_files):
-    # Select the appropriate ephemeris file based on the date range
-    # Given 1900-2600, will always select de440.bsp
+    """
+    Select the appropriate ephemeris file covering the entire range between two dates.
+
+    Parameters:
+        date1 (datetime): The start date.
+        date2 (datetime): The end date.
+        ephemeris_files (dict): A dictionary mapping ephemeris file names to their valid date ranges.
+
+    Returns:
+        str: The name of the ephemeris file that covers the entire date range.
+    """
     year1, year2 = date1.utc[0], date2.utc[0]
     for file_name, (start_year, end_year) in ephemeris_files.items():
         if start_year <= year1 <= end_year and start_year <= year2 <= end_year:
             return file_name
     return None
 
-
 def calculate_celestial_distance(ephemeris, celestial_body_name, date):
-    # Calculate the distance from the Sun to a celestial body
+    """
+    Calculate the distance from the Sun to a specified celestial body on a given date.
+
+    Parameters:
+        ephemeris (object): The loaded ephemeris data file.
+        celestial_body_name (str): The name of the celestial body.
+        date (datetime): The date for the distance calculation.
+
+    Returns:
+        float: The distance in astronomical units (AU).
+    """
     sun = ephemeris['sun']
     celestial_body = ephemeris[celestial_body_name]
     distance = sun.at(date).observe(celestial_body).distance().au
     return distance
 
-
 def calculate_velocities(dates, distances):
-    # Calculate velocities using the central difference method
+    """
+    Calculate the velocities of a celestial body using the central difference method.
+
+    Parameters:
+        dates (list): A list of Skyfield time objects representing the dates of observation.
+        distances (list): A list of distances corresponding to the dates.
+
+    Returns:
+        list: The velocities at each date, with None for the first and last dates.
+    """
     velocities = [None]  # No velocity for the first date
     for i in range(1, len(dates) - 1):
         time_diff = (dates[i + 1].tt - dates[i - 1].tt) * 24 * 3600  # Time difference in seconds
@@ -69,32 +97,58 @@ def calculate_velocities(dates, distances):
     velocities.append(None)  # No velocity for the last date
     return velocities
 
-
 def calculate_gravitational_force(mass_body, mass_sun, distance):
-    # Calculate gravitational force using Newton's law of universal gravitation
-    force = G * mass_body * mass_sun / (distance * 149597870.7e3) ** 2  # Convert AU to meters for the distance
+    """
+    Calculate the gravitational force between two bodies using Newton's law of gravitation.
+
+    Parameters:
+        mass_body (float): The mass of the body whose force is being calculated.
+        mass_sun (float): The mass of the sun.
+        distance (float): The distance between the two bodies in astronomical units (AU).
+
+    Returns:
+        float: The gravitational force in newtons (N).
+    """
+    distance_meters = distance * 149597870.7e3  # Convert AU to meters
+    force = G * mass_body * mass_sun / (distance_meters ** 2)
     return force
 
-
 def calculate_acceleration(force, mass_body):
-    # Calculate acceleration based on force and mass
-    acceleration = (force / mass_body) * 1000000  # Acceleration in micrometers/s^2
+    """
+    Calculate the acceleration of a body under a given force.
+
+    Parameters:
+        force (float): The force in newtons (N).
+        mass_body (float): The mass of the body in kilograms (kg).
+
+    Returns:
+        float: The acceleration in micrometers per second squared (µm/s²).
+    """
+    acceleration = (force / mass_body) * 1000000  # Convert m/s² to µm/s²
     return acceleration
 
+def print_distance_table(years, neptune_distances, neptune_velocities, neptune_accelerations, pluto_distances, pluto_velocities, pluto_accelerations):
+    """
+    Print a table of orbital characteristics for Neptune and Pluto over a range of years.
 
-def print_distance_table(years, neptune_distances, neptune_velocities, neptune_accelerations, pluto_distances,
-                         pluto_velocities, pluto_accelerations):
-    # Print a table of distances, velocities, and accelerations
-    # The first and final velocities and accelerations are ommitted
-    table = zip(years, neptune_distances, neptune_velocities, neptune_accelerations, pluto_distances, pluto_velocities,
-                pluto_accelerations)
+    Parameters:
+        years (list): List of years for which data is presented.
+        neptune_distances (list): List of distances of Neptune from the Sun in AU.
+        neptune_velocities (list): List of velocities of Neptune in m/s.
+        neptune_accelerations (list): List of accelerations of Neptune in µm/s².
+        pluto_distances (list): List of distances of Pluto from the Sun in AU.
+        pluto_velocities (list): List of velocities of Pluto in m/s.
+        pluto_accelerations (list): List of accelerations of Pluto in µm/s².
+    """
+    table = zip(years, neptune_distances, neptune_velocities, neptune_accelerations, pluto_distances, pluto_velocities, pluto_accelerations)
     headers = ["Year", "Neptune Distance (AU)", "Neptune RoC (m/s)", "Neptune Acceleration (µ/s²)",
                "Pluto Distance (AU)", "Pluto RoC (m/s)", "Pluto Acceleration (µ/s²)"]
     print(tabulate(table, headers=headers, floatfmt=".2f", missingval="N/A"))
 
-
 def print_closer_intervals(year_labels, neptune_distances, pluto_distances):
-    # Print intervals when Pluto was closer to the Sun than Neptune
+    """
+    Print intervals when Pluto was closer to the Sun than Neptune
+    """
     intervals = []
     i = 1
     while i < len(year_labels) - 1:
@@ -110,9 +164,10 @@ def print_closer_intervals(year_labels, neptune_distances, pluto_distances):
     for start, end in intervals:
         print(f"From {start:.2f} to {end:.2f}")
 
-
 def find_intersections(x, y1, y2):
-    # Find intersections between two curves
+    """
+    Find intersections between two curves
+    """
     intersections = []
     for i in range(len(x) - 1):
         if (y1[i] - y2[i]) * (y1[i + 1] - y2[i + 1]) < 0:
@@ -121,8 +176,10 @@ def find_intersections(x, y1, y2):
             intersections.append((x_intersect, y_intersect))
     return intersections
 
-
 def main():
+    """
+    Main function to orchestrate data loading, calculation, and visualization processes.
+    """
     # Initialize the loader and timescale
     loader = Loader('~/.skyfield-data', verbose=False)
     ts = loader.timescale()
