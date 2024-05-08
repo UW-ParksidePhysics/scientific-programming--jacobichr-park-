@@ -168,7 +168,7 @@ def visualize_vectors_in_space(minimum_x, maximum_x, number_of_dimensions, poten
 
 if __name__ == "__main__":
     # Visualize Vectors in Space
-    visualize_vectors_in_space(minimum_x=-10, maximum_x=10, number_of_dimensions=120, potential_name='harmonic', potential_parameter=1.0, display_graph=False)
+    visualize_vectors_in_space(minimum_x=-10, maximum_x=10, number_of_dimensions=120, potential_name='harmonic', potential_parameter=1.0, display_graph=True)
 
     # Fit an Equation of State
     current_dir = os.path.dirname(os.path.abspath(__file__))
