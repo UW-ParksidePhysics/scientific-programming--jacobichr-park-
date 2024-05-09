@@ -75,7 +75,7 @@ def plot_data_and_fit(data, eos_fit_curve, eos_parameters, chemical_symbol, crys
         f'K0 = {eos_parameters[1]:.1f} GPa': {'position': np.array([0.5, 0.85]), 'alignment': ['center', 'top'], 'fontsize': 12},
         f'Created by Jacob Christensen, {datetime.now().date().isoformat()}': {'position': np.array([0.05, 0.01]), 'alignment': ['left', 'bottom'], 'fontsize': 10}
     }
-    annotate_plot(annotations)
+    annotate_plot(ax, annotations)
 
     ax.legend()
     ax.grid(True)
@@ -156,7 +156,7 @@ def visualize_vectors_in_space(minimum_x, maximum_x, number_of_dimensions, poten
     annotations = {
         signature_text: {'position': [0.01, 0.01], 'alignment': ['left', 'bottom'], 'fontsize': 10}
     }
-    annotate_plot(annotations)
+    annotate_plot(ax, annotations)
 
     ax.legend()
     ax.grid(True)
