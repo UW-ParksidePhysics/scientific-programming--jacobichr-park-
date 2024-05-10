@@ -27,7 +27,7 @@ def calculate_bivariate_statistics(data):
     IndexError: If the data array has inappropriate dimensions.
     """
     if data.shape[0] != 2 or data.shape[1] <= 1:
-        raise IndexError("Data array must have 2 rows and more than 1 column.")
+        raise IndexError("Data array must have 2 columns and more than 1 row.")
 
     stats_y = stats.describe(data[1, :])
     min_x = np.min(data[0, :])
